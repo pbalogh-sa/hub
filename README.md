@@ -94,10 +94,11 @@ From here, you can now interact with the installed anchore policy bundle using a
 
 By default, when new resources are stored in this repository, or modifications are made, an automated process is executed to execute ./generate.py and serve the content via a publicly available site hosted at (TBD).  Alternatively, you may opt to run your own, internal, anchore hub using the tools in this repo, serving the data output by ./generate.py from any HTTP service you operate.  The clients (such as anchore-cli) can then be directed at this new location instead of the default public hub URL, and the rest of the operations will perform as described above. 
 
-Below is an example process for running a local anchore hub using a docker nginx container, for testing and to illustrate the general process.  Permanent installations would use a similiar process but host the generated static content in a permanent HTTP server location instead of a local nginx container location:
+Below is an example process for running a local anchore hub using a docker nginx container, for testing and to illustrate the general process.  Permanent installations would use a similiar process but host the generated static content in a permanent HTTP server location instead of a local nginx container location. In this example required dependencies are installed using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html#mkvirtualenv):
 
 ```
 # cd ./hub
+# mkvirtualenv -a $(pwd) -r requirements.txt anchore-hub
 # ./generate.py
 Using config:
 {
